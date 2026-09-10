@@ -4,10 +4,10 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Age of Harvest</title>
-  <meta name="description" content="Age of Harvest - a simulation-first game of settlements, bodies, and consequences." />
+  <meta name="description" content="Age of Harvest" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;500;600;700&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet" />
   <style>
     :root {
       --bg: #000000;
@@ -16,6 +16,7 @@
       --muted: #9a9a9a;
       --line: rgba(255, 255, 255, 0.12);
       --hover: #ffffff;
+      --pixel: "Pixelify Sans", "Courier New", monospace;
     }
 
     * { box-sizing: border-box; }
@@ -109,13 +110,14 @@
     }
 
     h2.roadmap {
-      font-family: MedievalSharp, "Times New Roman", serif;
-      font-size: clamp(1.7rem, 4vw, 2.2rem);
-      font-weight: 400;
+      font-family: var(--pixel);
+      font-size: clamp(1.55rem, 3.8vw, 2rem);
+      font-weight: 600;
       margin: 0;
       color: var(--text);
-      letter-spacing: 0.04em;
+      letter-spacing: 0.02em;
       text-align: center;
+      -webkit-font-smoothing: none;
     }
 
     .roadmap-row {
@@ -133,16 +135,11 @@
       image-rendering: pixelated;
       image-rendering: crisp-edges;
       flex: 0 0 auto;
-      /* Game outline: sprite_fx #828080, 1-texel silhouette */
       filter:
-        drop-shadow(1px 0 0 #828080)
-        drop-shadow(-1px 0 0 #828080)
-        drop-shadow(0 1px 0 #828080)
-        drop-shadow(0 -1px 0 #828080)
-        drop-shadow(1px 1px 0 #828080)
-        drop-shadow(-1px 1px 0 #828080)
-        drop-shadow(1px -1px 0 #828080)
-        drop-shadow(-1px -1px 0 #828080);
+        drop-shadow(0.5px 0 0 #828080)
+        drop-shadow(-0.5px 0 0 #828080)
+        drop-shadow(0 0.5px 0 #828080)
+        drop-shadow(0 -0.5px 0 #828080);
     }
 
     .note {
@@ -165,8 +162,8 @@
     }
 
     .completion-head strong {
-      font-family: MedievalSharp, "Times New Roman", serif;
-      font-weight: 400;
+      font-family: var(--pixel);
+      font-weight: 600;
       font-size: 1.05rem;
       color: var(--text);
     }
@@ -221,11 +218,12 @@
     }
 
     h3 {
-      font-family: MedievalSharp, "Times New Roman", serif;
-      font-size: 1.15rem;
-      font-weight: 400;
+      font-family: var(--pixel);
+      font-size: 1.1rem;
+      font-weight: 600;
       margin: 0 0 0.45rem;
       color: var(--text);
+      -webkit-font-smoothing: none;
     }
 
     ul {

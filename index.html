@@ -166,8 +166,8 @@
     }
 
     .crop {
-      width: 40px;
-      height: 40px;
+      width: 72px;
+      height: 72px;
       image-rendering: pixelated;
       image-rendering: crisp-edges;
       cursor: pointer;
@@ -178,6 +178,11 @@
         drop-shadow(0 0.5px 0 #828080)
         drop-shadow(0 -0.5px 0 #828080);
       transition: opacity 0.12s ease, transform 0.12s ease;
+    }
+
+    .crop.goblin {
+      width: 80px;
+      height: 80px;
     }
 
     .crop.reaping {
@@ -519,27 +524,37 @@
         "assets/wheat_05.png"
       ];
       var next = 0;
-      var swing = new Audio("assets/scythe_swing.mp3");
-      swing.volume = 0.55;
+      var cut = new Audio("assets/scythe_cut.m4a");
+      cut.volume = 0.65;
+      var bark = new Audio("assets/goblin_bark.m4a");
+      bark.volume = 0.7;
 
-      function playSwing() {
+      function play(srcAudio) {
         try {
-          var a = swing.cloneNode();
-          a.volume = swing.volume;
+          var a = srcAudio.cloneNode();
+          a.volume = srcAudio.volume;
           a.play();
         } catch (e) {}
       }
 
       function addCrop() {
+        var isGoblin = Math.random() < 0.22;
         var img = document.createElement("img");
-        img.className = "crop";
-        img.src = wheat[next % wheat.length];
-        next += 1;
+        if (isGoblin) {
+          img.className = "crop goblin";
+          img.src = "assets/goblin.png";
+          img.width = 64;
+          img.height = 64;
+        } else {
+          img.className = "crop";
+          img.src = wheat[next % wheat.length];
+          next += 1;
+          img.width = 64;
+          img.height = 64;
+        }
         img.alt = "";
-        img.width = 64;
-        img.height = 64;
         img.addEventListener("click", function () {
-          playSwing();
+          play(isGoblin ? bark : cut);
           img.classList.add("reaping");
           setTimeout(function () {
             if (img.parentNode) img.parentNode.removeChild(img);

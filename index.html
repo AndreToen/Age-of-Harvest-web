@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Age of Harvest</title>
+  <meta name="description" content="Age of Harvest - a simulation-first game of settlements, bodies, and consequences." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #000000;
+      --panel: #121212;
+      --text: #e8e8e8;
+      --muted: #9a9a9a;
+      --line: rgba(255, 255, 255, 0.12);
+      --hover: #ffffff;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      min-height: 100vh;
+      font-family: "Source Sans 3", system-ui, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.5;
+    }
+
+    .wrap {
+      width: min(860px, calc(100% - 2rem));
+      margin: 0 auto;
+      padding: 2.5rem 0 3.5rem;
+      animation: rise 0.9s ease both;
+    }
+
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 2.25rem;
+    }
+
+    .banner {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin: 0 auto 0.5rem;
+      background: #000;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem 1.1rem;
+      justify-content: center;
+      margin-top: 1.35rem;
+      align-items: center;
+    }
+
+    .links a {
+      color: var(--muted);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.35rem;
+      height: 2.35rem;
+      border: 2px solid var(--line);
+      transition: color 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+    }
+
+    .links a:hover,
+    .links a:focus-visible {
+      color: var(--hover);
+      border-color: rgba(255, 255, 255, 0.45);
+      background: rgba(255, 255, 255, 0.06);
+      outline: none;
+    }
+
+    .links svg {
+      width: 1.2rem;
+      height: 1.2rem;
+      fill: currentColor;
+      display: block;
+    }
+
+    main {
+      background: var(--panel);
+      border: 2px solid var(--line);
+      border-radius: 0;
+      padding: 1.35rem 1.35rem 1.1rem;
+    }
+
+    h2.roadmap {
+      font-family: MedievalSharp, "Times New Roman", serif;
+      font-size: clamp(1.7rem, 4vw, 2.2rem);
+      font-weight: 400;
+      margin: 0 0 0.35rem;
+      color: var(--text);
+      letter-spacing: 0.04em;
+    }
+
+    .note {
+      margin: 0 0 1rem;
+      color: var(--muted);
+      font-size: 0.98rem;
+    }
+
+    .completion {
+      margin: 0 0 1.35rem;
+    }
+
+    .completion-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 0.45rem;
+      font-size: 0.95rem;
+    }
+
+    .completion-head strong {
+      font-family: MedievalSharp, "Times New Roman", serif;
+      font-weight: 400;
+      font-size: 1.05rem;
+      color: var(--text);
+    }
+
+    .completion-head span {
+      color: var(--muted);
+    }
+
+    .bar {
+      display: flex;
+      width: 100%;
+      height: 14px;
+      overflow: hidden;
+      border: 2px solid var(--line);
+      background: #0a0a0a;
+    }
+
+    .bar .seg-done { background: #2f9e5b; flex: 27; }
+    .bar .seg-partial { background: #d4b12a; flex: 16; }
+    .bar .seg-missing { background: #c43c32; flex: 16; }
+
+    .bar-labels {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem 1.1rem;
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .bar-labels b {
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .dot {
+      display: inline-block;
+      width: 0.65em;
+      height: 0.65em;
+      margin-right: 0.35em;
+      vertical-align: 0.05em;
+    }
+
+    .dot-done { background: #2f9e5b; }
+    .dot-partial { background: #d4b12a; }
+    .dot-missing { background: #c43c32; }
+
+    section + section {
+      margin-top: 1.2rem;
+      padding-top: 1rem;
+      border-top: 2px solid var(--line);
+    }
+
+    h3 {
+      font-family: MedievalSharp, "Times New Roman", serif;
+      font-size: 1.15rem;
+      font-weight: 400;
+      margin: 0 0 0.45rem;
+      color: var(--text);
+    }
+
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    li {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      align-items: center;
+      padding: 0.28rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      font-family: "Source Sans 3", system-ui, sans-serif;
+      font-size: 1rem;
+    }
+
+    li:last-child { border-bottom: 0; }
+    li span:first-child { color: var(--text); }
+    li .status { align-self: center; }
+
+    .status {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      flex: 0 0 auto;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      vertical-align: middle;
+    }
+
+    .status-done { background: #2f9e5b; }
+    .status-partial { background: #d4b12a; }
+    .status-missing { background: #c43c32; }
+
+    .legend .status {
+      margin-right: 0.4em;
+    }
+
+
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem 1.25rem;
+      margin-top: 1.25rem;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    footer {
+      margin-top: 1.75rem;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1 class="sr-only">Age of Harvest</h1>
+      <img
+        class="banner"
+        src="assets/age-of-harvest-banner.jpg"
+        alt="Age of Harvest"
+        width="858"
+        height="267"
+      />
+      <nav class="links" aria-label="Social">
+        <a href="https://discord.gg/6aTWUak5xz" rel="noopener noreferrer" aria-label="Discord" title="Discord">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.27 5.33C17.94 4.71 16.5 4.26 15 4a.09.09 0 0 0-.07.03c-.18.33-.39.76-.53 1.09a16.09 16.09 0 0 0-4.8 0c-.14-.34-.35-.76-.54-1.09c-.01-.02-.04-.03-.07-.03c-1.5.26-2.93.71-4.27 1.33c-.01 0-.02.01-.03.02c-2.72 4.07-3.47 8.03-3.1 11.95c0 .02.01.04.03.05c1.8 1.32 3.53 2.12 5.24 2.65c.03.01.06 0 .07-.02c.4-.55.76-1.13 1.07-1.74c.02-.04 0-.08-.04-.09c-.57-.22-1.11-.48-1.64-.78c-.04-.02-.04-.08-.01-.11c.11-.08.22-.17.33-.25c.02-.02.05-.02.07-.01c3.44 1.57 7.15 1.57 10.55 0c.02-.01.05-.01.07.01c.11.09.22.17.33.26c.04.03.04.09-.01.11c-.52.31-1.07.56-1.64.78c-.04.01-.05.06-.04.09c.32.61.68 1.19 1.07 1.74c.02.02.05.03.08.02c1.72-.53 3.45-1.33 5.25-2.65c.02-.01.03-.03.03-.05c.44-4.53-.73-8.46-3.1-11.95c-.01-.01-.02-.02-.04-.02zM8.68 14.81c-1.03 0-1.89-.95-1.89-2.12s.84-2.12 1.89-2.12c1.06 0 1.9.96 1.89 2.12c0 1.17-.84 2.12-1.89 2.12zm6.65 0c-1.03 0-1.89-.95-1.89-2.12s.84-2.12 1.89-2.12c1.06 0 1.9.96 1.89 2.12c0 1.17-.83 2.12-1.89 2.12z"/></svg>
+        </a>
+        <a href="https://x.com/ToenAndreMC" rel="noopener noreferrer" aria-label="X" title="X">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.722-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z"/></svg>
+        </a>
+        <a href="https://bsky.app/profile/andretoen.bsky.social" rel="noopener noreferrer" aria-label="Bluesky" title="Bluesky">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 10.8c-1.087-2.114-4.046-6.053-6.798-7.995C2.566.944 1.561 1.266.902 1.565C.139 1.908 0 3.08 0 3.768c0 .69.378 5.65.624 6.479c.815 2.736 3.713 3.66 6.383 3.364c.136-.02.275-.039.415-.056c-.138.022-.276.04-.415.056c-3.912.58-7.372 2.01-2.83 7.077c.99.99 1.96.74 2.747-.08c1.87-1.912 3.353-4.208 5.076-4.208s3.206 2.296 5.076 4.208c.787.82 1.757 1.07 2.747.08c4.542-5.067 1.082-6.498-2.83-7.077a9.906 9.906 0 0 1-.415-.056c.14.017.279.036.415.056c2.67.297 5.568-.628 6.383-3.364c.246-.828.624-5.79.624-6.478c0-.69-.139-1.861-.902-2.206c-.659-.298-1.664-.62-4.3 1.24C16.046 4.748 13.087 8.687 12 10.8z"/></svg>
+        </a>
+        <a href="https://www.instagram.com/toendf/" rel="noopener noreferrer" aria-label="Instagram" title="Instagram">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07c3.252.148 4.771 1.691 4.919 4.919c.058 1.265.069 1.645.069 4.849c0 3.205-.012 3.584-.069 4.849c-.149 3.225-1.664 4.771-4.919 4.919c-1.266.058-1.644.07-4.85.07c-3.204 0-3.584-.012-4.849-.07c-3.26-.149-4.771-1.699-4.919-4.92c-.058-1.265-.07-1.644-.07-4.849c0-3.204.013-3.583.07-4.849c.149-3.227 1.664-4.771 4.919-4.919c1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072C2.695.272.273 2.69.073 7.052C.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948c.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072c4.354-.2 6.782-2.618 6.979-6.98C23.986 15.668 24 15.259 24 12c0-3.259-.014-3.667-.072-4.947c-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324a6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8a4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881a1.44 1.44 0 0 0 0-2.881z"/></svg>
+        </a>
+      </nav>
+    </header>
+
+    <main>
+      <h2 class="roadmap">Roadmap</h2>
+
+      <div class="completion" aria-label="Completion">
+        <div class="completion-head">
+          <strong>Completion</strong>
+          <span>~59% complete</span>
+        </div>
+        <div class="bar" role="img" aria-label="27 done, 16 partial, 16 not yet">
+          <div class="seg-done" title="Done"></div>
+          <div class="seg-partial" title="Partial"></div>
+          <div class="seg-missing" title="Not yet"></div>
+        </div>
+        <div class="bar-labels">
+          <span><i class="dot dot-done" aria-hidden="true"></i><b>46%</b> done</span>
+          <span><i class="dot dot-partial" aria-hidden="true"></i><b>27%</b> partial</span>
+          <span><i class="dot dot-missing" aria-hidden="true"></i><b>27%</b> not yet</span>
+        </div>
+      </div>
+
+      <section>
+        <h3>1. World &amp; Settlements</h3>
+        <ul>
+          <li><span>Procedurally generated settlements</span><span class="status status-partial" title="Partial" aria-label="Partial"></span></li>
+          <li><span>Houses, rooms, doors and basic structures</span><span class="status status-done" title="Done" aria-label="Done"></span></li>
+          <li><span>NPCs living and moving through settlements</span><span class="status status-done" title="Done" aria-label="Done"></span></li>
+          <li><span>Roads and connections between places</span><span class="status status-partial" title="Partial" aria-label="Partial"></span></li>
+          <li><span>Basic weather and day/night behavior</span><span class="status status-done" title="Done" aria-label="Done"></span></li>
+          <li><span>A small explorable wilderness around settlements</span><span class="status status-partial" title="Partial" aria-label="Partial"></span></li>
+        </ul>
+      </section>
+
+      <section>
+        <h3>2. Character &amp; Body</h3>
+        <ul>
+          <li><span>Body parts and physical condition</span><span class="status status-done" title="Done" aria-label="Done"></span></li>
+          <li><span>Strength, endurance and physical development</span><span class="status status-partial" title="Partial" aria-label="Partial"></span></li>
+          <li><span>Mental strength / resilience</span><span class="status status-missing" title="Not yet" aria-label="Not yet"></span></li>
+          <li><span>Stamina and fatigue</span><span class="status status-done" title="Done" aria-label="Done"></span></li>
+          <li><span>Injuries with meaningful consequences</span><span class="status status-done" title="Done" aria-label="Done"></span></li>
+          <li><span>Basic character progression</span><span class="status status-missing" title="Not yet" aria-label="Not yet"></span></li>
+          <li><span>Recovery over time</span><span class="status status-done" title="Done" aria-label="Done"></span></li>
+        </ul>
+      </section>
+
+      <section>
+        <h3>3. Combat</h3>
+        <ul>
+          <li><span>Melee combat</span><span class="status status-done" title="Done" aria-label="Done"></span></li>
+          <li><span>Weapons and equipment</span><span class="status status-done" title="Done" aria-label="Done"></span></li>
+          <li><span>Direction, distance and positioning</span><span class="status status-partial" title="Partial" aria-label="Partial"></span></li>
+          <li><span>Body-part damage</span><span class="status status-done" title="Done" aria-label="Done"></span></li>
+          <li><span>Combat injuries affecting the character</span><span class="status status-done" title="Done" aria-label="Done"></span></li>
+          <li><span>Death and consequences</span><span class="status status-partial" title="Partial" aria-label="Partial"></span></li>
+        </ul>
+      </section>
+
+      <section>
+        <h3>4. Enemies &amp; AI</h3>
+        <ul>
+          <li><span>Basic perception</span><span class="status status-done" title="Done" aria-label="Done"></span></li>
+          <li><span>Investigation and pursuit</span><span class="status status-done" title="Done" aria-label="Done"></span></li>
+          <li><span>Combat behavior</span><span class="status status-done" title="Done" aria-label="Done"></span></li>
+          <li><span>Retreat and fleeing</span><span class="status status-done" title="Done" aria-label="Done"></span></li>
+          <li><span>Searching for lost targets</span><span class="status status-done" title="Done" aria-label="Done"></span></li>
+          <li><span>Different behaviors for different enemy types</span><span class="status status-partial" title="Partial" aria-label="Partial"></span></li>
+        </ul>
+      </section>
+
+      <section>
+        <h3>5. Resources &amp; Economy</h3>
+        <ul>
+          <li><span>Gathering resources</span><span class="status status-missing" title="Not yet" aria-label="Not yet"></span></li>
+          <li><span>Butchering</span><span class="status status-done" title="Done" aria-label="Done"></span></li>
+          <li><span>Inventory</span><span class="status status-done" title="Done" aria-label="Done"></span></li>
+          <li><span>Crafting</span><span class="status status-missing" title="Not yet" aria-label="Not yet"></span></li>
+          <li><span>Repairing</span><span class="status status-missing" title="Not yet" aria-label="Not yet"></span></li>
+          <li><span>Buying and selling</span><span class="status status-missing" title="Not yet" aria-label="Not yet"></span></li>
+          <li><span>Loot</span><span class="status status-done" title="Done" aria-label="Done"></span></li>
+          <li><span>Basic item durability and material use</span><span class="status status-partial" title="Partial" aria-label="Partial"></span></li>
+        </ul>
+      </section>
+
+      <section>
+        <h3>6. NPCs &amp; Interaction</h3>
+        <ul>
+          <li><span>NPC dialogue</span><span class="status status-done" title="Done" aria-label="Done"></span></li>
+          <li><span>Basic relationships</span><span class="status status-partial" title="Partial" aria-label="Partial"></span></li>
+          <li><span>NPC memory of important interactions</span><span class="status status-partial" title="Partial" aria-label="Partial"></span></li>
+          <li><span>Simple requests and favors</span><span class="status status-missing" title="Not yet" aria-label="Not yet"></span></li>
+          <li><span>NPC reactions to the player's actions</span><span class="status status-done" title="Done" aria-label="Done"></span></li>
+          <li><span>Different roles and personalities</span><span class="status status-done" title="Done" aria-label="Done"></span></li>
+        </ul>
+      </section>
+
+      <section>
+        <h3>7. Healing &amp; Survival</h3>
+        <ul>
+          <li><span>Treating injuries</span><span class="status status-done" title="Done" aria-label="Done"></span></li>
+          <li><span>Rest and sleep</span><span class="status status-done" title="Done" aria-label="Done"></span></li>
+          <li><span>Food and basic survival needs</span><span class="status status-missing" title="Not yet" aria-label="Not yet"></span></li>
+          <li><span>Recovery over time</span><span class="status status-done" title="Done" aria-label="Done"></span></li>
+          <li><span>Consequences of pushing your body too far</span><span class="status status-done" title="Done" aria-label="Done"></span></li>
+        </ul>
+      </section>
+
+      <section>
+        <h3>8. Skills &amp; Development</h3>
+        <ul>
+          <li><span>Skills improving through use</span><span class="status status-missing" title="Not yet" aria-label="Not yet"></span></li>
+          <li><span>Physical development through activity</span><span class="status status-missing" title="Not yet" aria-label="Not yet"></span></li>
+          <li><span>Weapon proficiency</span><span class="status status-missing" title="Not yet" aria-label="Not yet"></span></li>
+          <li><span>Crafting and survival skills</span><span class="status status-missing" title="Not yet" aria-label="Not yet"></span></li>
+          <li><span>Character development without traditional level-ups</span><span class="status status-missing" title="Not yet" aria-label="Not yet"></span></li>
+        </ul>
+      </section>
+
+      <section>
+        <h3>9. World Events &amp; Emergent Situations</h3>
+        <ul>
+          <li><span>NPCs reacting to events</span><span class="status status-partial" title="Partial" aria-label="Partial"></span></li>
+          <li><span>Small problems and requests appearing naturally</span><span class="status status-missing" title="Not yet" aria-label="Not yet"></span></li>
+          <li><span>Creatures and NPCs affecting each other</span><span class="status status-done" title="Done" aria-label="Done"></span></li>
+          <li><span>Consequences that persist after the player leaves</span><span class="status status-partial" title="Partial" aria-label="Partial"></span></li>
+          <li><span>Situations that can be solved in multiple ways</span><span class="status status-partial" title="Partial" aria-label="Partial"></span></li>
+        </ul>
+      </section>
+
+      <section>
+        <h3>10. Persistence</h3>
+        <ul>
+          <li><span>Save/load</span><span class="status status-missing" title="Not yet" aria-label="Not yet"></span></li>
+          <li><span>Persistent character development</span><span class="status status-missing" title="Not yet" aria-label="Not yet"></span></li>
+          <li><span>Persistent injuries and equipment</span><span class="status status-partial" title="Partial" aria-label="Partial"></span></li>
+          <li><span>Important NPC changes</span><span class="status status-partial" title="Partial" aria-label="Partial"></span></li>
+          <li><span>Persistent changes to the world</span><span class="status status-partial" title="Partial" aria-label="Partial"></span></li>
+        </ul>
+      </section>
+
+      <p class="legend">
+        <span><i class="status status-done" aria-hidden="true"></i> Done</span>
+        <span><i class="status status-partial" aria-hidden="true"></i> Partial</span>
+        <span><i class="status status-missing" aria-hidden="true"></i> Not yet</span>
+      </p>
+    </main>
+
+    <footer>
+      Age of Harvest
+    </footer>
+  </div>
+</body>
+</html>

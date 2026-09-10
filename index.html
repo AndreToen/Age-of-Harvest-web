@@ -269,8 +269,8 @@
 
     li {
       display: flex;
-      justify-content: space-between;
-      gap: 1rem;
+      justify-content: flex-start;
+      gap: 0.55rem;
       align-items: center;
       padding: 0.28rem 0;
       border-bottom: 1px solid rgba(255, 255, 255, 0.06);
@@ -279,8 +279,23 @@
     }
 
     li:last-child { border-bottom: 0; }
-    li span:first-child { color: var(--text); }
-    li .status { align-self: center; }
+    li > span:first-child {
+      color: var(--text);
+      flex: 0 1 auto;
+      max-width: 78%;
+    }
+    li > .status {
+      order: 2;
+      align-self: center;
+    }
+    li::after {
+      content: "";
+      order: 1;
+      flex: 1 1 auto;
+      min-width: 0.75rem;
+      border-bottom: 1px dotted rgba(255, 255, 255, 0.28);
+      transform: translateY(-0.12em);
+    }
 
     .status {
       display: inline-block;

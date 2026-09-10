@@ -128,16 +128,21 @@
     }
 
     .sprite {
-      width: 48px;
-      height: 48px;
+      width: 56px;
+      height: 56px;
       image-rendering: pixelated;
       image-rendering: crisp-edges;
       flex: 0 0 auto;
-    }
-
-    .sprite-lg {
-      width: 64px;
-      height: 64px;
+      /* Game outline: sprite_fx #828080, 1-texel silhouette */
+      filter:
+        drop-shadow(1px 0 0 #828080)
+        drop-shadow(-1px 0 0 #828080)
+        drop-shadow(0 1px 0 #828080)
+        drop-shadow(0 -1px 0 #828080)
+        drop-shadow(1px 1px 0 #828080)
+        drop-shadow(-1px 1px 0 #828080)
+        drop-shadow(1px -1px 0 #828080)
+        drop-shadow(-1px -1px 0 #828080);
     }
 
     .note {
@@ -308,11 +313,9 @@
 
     <main>
       <div class="roadmap-row">
-        <img class="sprite" src="assets/wheat.png" alt="" width="64" height="64" />
-        <img class="sprite sprite-lg" src="assets/player.png" alt="" width="64" height="64" />
+        <img class="sprite" src="assets/scythe.png" alt="" width="32" height="32" />
         <h2 class="roadmap">Roadmap to Alpha</h2>
-        <img class="sprite sprite-lg" src="assets/scythe.png" alt="" width="32" height="32" />
-        <img class="sprite" src="assets/wheat.png" alt="" width="64" height="64" />
+        <img class="sprite" src="assets/scythe.png" alt="" width="32" height="32" />
       </div>
 
       <div class="completion" aria-label="Completion">

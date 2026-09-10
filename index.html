@@ -284,17 +284,16 @@
       flex: 0 1 auto;
       max-width: 78%;
     }
-    li > .status {
-      order: 2;
-      align-self: center;
-    }
-    li::after {
-      content: "";
-      order: 1;
+    li > .lead {
       flex: 1 1 auto;
-      min-width: 0.75rem;
-      border-bottom: 1px dotted rgba(255, 255, 255, 0.28);
-      transform: translateY(-0.12em);
+      min-width: 1.25rem;
+      height: 1px;
+      align-self: center;
+      background: repeating-linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0.42) 0 2px,
+        transparent 2px 5px
+      );
     }
 
     .status {
@@ -302,7 +301,9 @@
       width: 12px;
       height: 12px;
       flex: 0 0 auto;
-      border: none;
+      border: 0;
+      outline: none;
+      box-shadow: none;
       vertical-align: middle;
     }
 
@@ -387,119 +388,119 @@
       <section>
         <h3>1. World &amp; Settlements</h3>
         <ul>
-          <li><span>Procedural settlements</span><span class="status status-partial" title="Partial" aria-label="Partial"></span></li>
-          <li><span>Houses, rooms, doors</span><span class="status status-done" title="Done" aria-label="Done"></span></li>
-          <li><span>NPCs in settlements</span><span class="status status-done" title="Done" aria-label="Done"></span></li>
-          <li><span>Roads between places</span><span class="status status-partial" title="Partial" aria-label="Partial"></span></li>
-          <li><span>Weather and day/night</span><span class="status status-done" title="Done" aria-label="Done"></span></li>
-          <li><span>Wilderness around settlements</span><span class="status status-partial" title="Partial" aria-label="Partial"></span></li>
+          <li><span>Procedural settlements</span><span class="lead" aria-hidden="true"></span><span class="status status-partial" title="Partial" aria-label="Partial"></span></li>
+          <li><span>Houses, rooms, doors</span><span class="lead" aria-hidden="true"></span><span class="status status-done" title="Done" aria-label="Done"></span></li>
+          <li><span>NPCs in settlements</span><span class="lead" aria-hidden="true"></span><span class="status status-done" title="Done" aria-label="Done"></span></li>
+          <li><span>Roads between places</span><span class="lead" aria-hidden="true"></span><span class="status status-partial" title="Partial" aria-label="Partial"></span></li>
+          <li><span>Weather and day/night</span><span class="lead" aria-hidden="true"></span><span class="status status-done" title="Done" aria-label="Done"></span></li>
+          <li><span>Wilderness around settlements</span><span class="lead" aria-hidden="true"></span><span class="status status-partial" title="Partial" aria-label="Partial"></span></li>
         </ul>
       </section>
 
       <section>
         <h3>2. Character &amp; Body</h3>
         <ul>
-          <li><span>Body parts</span><span class="status status-done" title="Done" aria-label="Done"></span></li>
-          <li><span>Strength and endurance</span><span class="status status-partial" title="Partial" aria-label="Partial"></span></li>
-          <li><span>Mental strength</span><span class="status status-missing" title="Not yet" aria-label="Not yet"></span></li>
-          <li><span>Stamina</span><span class="status status-done" title="Done" aria-label="Done"></span></li>
-          <li><span>Injuries</span><span class="status status-done" title="Done" aria-label="Done"></span></li>
-          <li><span>Character progression</span><span class="status status-missing" title="Not yet" aria-label="Not yet"></span></li>
-          <li><span>Recovery</span><span class="status status-done" title="Done" aria-label="Done"></span></li>
+          <li><span>Body parts</span><span class="lead" aria-hidden="true"></span><span class="status status-done" title="Done" aria-label="Done"></span></li>
+          <li><span>Strength and endurance</span><span class="lead" aria-hidden="true"></span><span class="status status-partial" title="Partial" aria-label="Partial"></span></li>
+          <li><span>Mental strength</span><span class="lead" aria-hidden="true"></span><span class="status status-missing" title="Not yet" aria-label="Not yet"></span></li>
+          <li><span>Stamina</span><span class="lead" aria-hidden="true"></span><span class="status status-done" title="Done" aria-label="Done"></span></li>
+          <li><span>Injuries</span><span class="lead" aria-hidden="true"></span><span class="status status-done" title="Done" aria-label="Done"></span></li>
+          <li><span>Character progression</span><span class="lead" aria-hidden="true"></span><span class="status status-missing" title="Not yet" aria-label="Not yet"></span></li>
+          <li><span>Recovery</span><span class="lead" aria-hidden="true"></span><span class="status status-done" title="Done" aria-label="Done"></span></li>
         </ul>
       </section>
 
       <section>
         <h3>3. Combat</h3>
         <ul>
-          <li><span>Melee combat</span><span class="status status-done" title="Done" aria-label="Done"></span></li>
-          <li><span>Weapons and equipment</span><span class="status status-done" title="Done" aria-label="Done"></span></li>
-          <li><span>Positioning</span><span class="status status-partial" title="Partial" aria-label="Partial"></span></li>
-          <li><span>Body-part damage</span><span class="status status-done" title="Done" aria-label="Done"></span></li>
-          <li><span>Combat injuries</span><span class="status status-done" title="Done" aria-label="Done"></span></li>
-          <li><span>Death</span><span class="status status-partial" title="Partial" aria-label="Partial"></span></li>
+          <li><span>Melee combat</span><span class="lead" aria-hidden="true"></span><span class="status status-done" title="Done" aria-label="Done"></span></li>
+          <li><span>Weapons and equipment</span><span class="lead" aria-hidden="true"></span><span class="status status-done" title="Done" aria-label="Done"></span></li>
+          <li><span>Positioning</span><span class="lead" aria-hidden="true"></span><span class="status status-partial" title="Partial" aria-label="Partial"></span></li>
+          <li><span>Body-part damage</span><span class="lead" aria-hidden="true"></span><span class="status status-done" title="Done" aria-label="Done"></span></li>
+          <li><span>Combat injuries</span><span class="lead" aria-hidden="true"></span><span class="status status-done" title="Done" aria-label="Done"></span></li>
+          <li><span>Death</span><span class="lead" aria-hidden="true"></span><span class="status status-partial" title="Partial" aria-label="Partial"></span></li>
         </ul>
       </section>
 
       <section>
         <h3>4. Enemies &amp; AI</h3>
         <ul>
-          <li><span>Perception</span><span class="status status-done" title="Done" aria-label="Done"></span></li>
-          <li><span>Investigation and pursuit</span><span class="status status-done" title="Done" aria-label="Done"></span></li>
-          <li><span>Combat behavior</span><span class="status status-done" title="Done" aria-label="Done"></span></li>
-          <li><span>Retreat</span><span class="status status-done" title="Done" aria-label="Done"></span></li>
-          <li><span>Searching</span><span class="status status-done" title="Done" aria-label="Done"></span></li>
-          <li><span>Enemy types</span><span class="status status-partial" title="Partial" aria-label="Partial"></span></li>
+          <li><span>Perception</span><span class="lead" aria-hidden="true"></span><span class="status status-done" title="Done" aria-label="Done"></span></li>
+          <li><span>Investigation and pursuit</span><span class="lead" aria-hidden="true"></span><span class="status status-done" title="Done" aria-label="Done"></span></li>
+          <li><span>Combat behavior</span><span class="lead" aria-hidden="true"></span><span class="status status-done" title="Done" aria-label="Done"></span></li>
+          <li><span>Retreat</span><span class="lead" aria-hidden="true"></span><span class="status status-done" title="Done" aria-label="Done"></span></li>
+          <li><span>Searching</span><span class="lead" aria-hidden="true"></span><span class="status status-done" title="Done" aria-label="Done"></span></li>
+          <li><span>Enemy types</span><span class="lead" aria-hidden="true"></span><span class="status status-partial" title="Partial" aria-label="Partial"></span></li>
         </ul>
       </section>
 
       <section>
         <h3>5. Resources &amp; Economy</h3>
         <ul>
-          <li><span>Gathering</span><span class="status status-missing" title="Not yet" aria-label="Not yet"></span></li>
-          <li><span>Butchering</span><span class="status status-done" title="Done" aria-label="Done"></span></li>
-          <li><span>Inventory</span><span class="status status-done" title="Done" aria-label="Done"></span></li>
-          <li><span>Crafting</span><span class="status status-missing" title="Not yet" aria-label="Not yet"></span></li>
-          <li><span>Repairing</span><span class="status status-missing" title="Not yet" aria-label="Not yet"></span></li>
-          <li><span>Buying and selling</span><span class="status status-missing" title="Not yet" aria-label="Not yet"></span></li>
-          <li><span>Loot</span><span class="status status-done" title="Done" aria-label="Done"></span></li>
-          <li><span>Durability</span><span class="status status-partial" title="Partial" aria-label="Partial"></span></li>
+          <li><span>Gathering</span><span class="lead" aria-hidden="true"></span><span class="status status-missing" title="Not yet" aria-label="Not yet"></span></li>
+          <li><span>Butchering</span><span class="lead" aria-hidden="true"></span><span class="status status-done" title="Done" aria-label="Done"></span></li>
+          <li><span>Inventory</span><span class="lead" aria-hidden="true"></span><span class="status status-done" title="Done" aria-label="Done"></span></li>
+          <li><span>Crafting</span><span class="lead" aria-hidden="true"></span><span class="status status-missing" title="Not yet" aria-label="Not yet"></span></li>
+          <li><span>Repairing</span><span class="lead" aria-hidden="true"></span><span class="status status-missing" title="Not yet" aria-label="Not yet"></span></li>
+          <li><span>Buying and selling</span><span class="lead" aria-hidden="true"></span><span class="status status-missing" title="Not yet" aria-label="Not yet"></span></li>
+          <li><span>Loot</span><span class="lead" aria-hidden="true"></span><span class="status status-done" title="Done" aria-label="Done"></span></li>
+          <li><span>Durability</span><span class="lead" aria-hidden="true"></span><span class="status status-partial" title="Partial" aria-label="Partial"></span></li>
         </ul>
       </section>
 
       <section>
         <h3>6. NPCs &amp; Interaction</h3>
         <ul>
-          <li><span>Dialogue</span><span class="status status-done" title="Done" aria-label="Done"></span></li>
-          <li><span>Relationships</span><span class="status status-partial" title="Partial" aria-label="Partial"></span></li>
-          <li><span>NPC memory</span><span class="status status-partial" title="Partial" aria-label="Partial"></span></li>
-          <li><span>Requests and favors</span><span class="status status-missing" title="Not yet" aria-label="Not yet"></span></li>
-          <li><span>NPC reactions</span><span class="status status-done" title="Done" aria-label="Done"></span></li>
-          <li><span>Roles and personalities</span><span class="status status-done" title="Done" aria-label="Done"></span></li>
+          <li><span>Dialogue</span><span class="lead" aria-hidden="true"></span><span class="status status-done" title="Done" aria-label="Done"></span></li>
+          <li><span>Relationships</span><span class="lead" aria-hidden="true"></span><span class="status status-partial" title="Partial" aria-label="Partial"></span></li>
+          <li><span>NPC memory</span><span class="lead" aria-hidden="true"></span><span class="status status-partial" title="Partial" aria-label="Partial"></span></li>
+          <li><span>Requests and favors</span><span class="lead" aria-hidden="true"></span><span class="status status-missing" title="Not yet" aria-label="Not yet"></span></li>
+          <li><span>NPC reactions</span><span class="lead" aria-hidden="true"></span><span class="status status-done" title="Done" aria-label="Done"></span></li>
+          <li><span>Roles and personalities</span><span class="lead" aria-hidden="true"></span><span class="status status-done" title="Done" aria-label="Done"></span></li>
         </ul>
       </section>
 
       <section>
         <h3>7. Healing &amp; Survival</h3>
         <ul>
-          <li><span>Treating injuries</span><span class="status status-done" title="Done" aria-label="Done"></span></li>
-          <li><span>Rest and sleep</span><span class="status status-done" title="Done" aria-label="Done"></span></li>
-          <li><span>Food</span><span class="status status-missing" title="Not yet" aria-label="Not yet"></span></li>
-          <li><span>Recovery</span><span class="status status-done" title="Done" aria-label="Done"></span></li>
-          <li><span>Overexertion</span><span class="status status-done" title="Done" aria-label="Done"></span></li>
+          <li><span>Treating injuries</span><span class="lead" aria-hidden="true"></span><span class="status status-done" title="Done" aria-label="Done"></span></li>
+          <li><span>Rest and sleep</span><span class="lead" aria-hidden="true"></span><span class="status status-done" title="Done" aria-label="Done"></span></li>
+          <li><span>Food</span><span class="lead" aria-hidden="true"></span><span class="status status-missing" title="Not yet" aria-label="Not yet"></span></li>
+          <li><span>Recovery</span><span class="lead" aria-hidden="true"></span><span class="status status-done" title="Done" aria-label="Done"></span></li>
+          <li><span>Overexertion</span><span class="lead" aria-hidden="true"></span><span class="status status-done" title="Done" aria-label="Done"></span></li>
         </ul>
       </section>
 
       <section>
         <h3>8. Skills &amp; Development</h3>
         <ul>
-          <li><span>Skills through use</span><span class="status status-missing" title="Not yet" aria-label="Not yet"></span></li>
-          <li><span>Physical development</span><span class="status status-missing" title="Not yet" aria-label="Not yet"></span></li>
-          <li><span>Weapon proficiency</span><span class="status status-missing" title="Not yet" aria-label="Not yet"></span></li>
-          <li><span>Crafting skills</span><span class="status status-missing" title="Not yet" aria-label="Not yet"></span></li>
-          <li><span>Progression without levels</span><span class="status status-missing" title="Not yet" aria-label="Not yet"></span></li>
+          <li><span>Skills through use</span><span class="lead" aria-hidden="true"></span><span class="status status-missing" title="Not yet" aria-label="Not yet"></span></li>
+          <li><span>Physical development</span><span class="lead" aria-hidden="true"></span><span class="status status-missing" title="Not yet" aria-label="Not yet"></span></li>
+          <li><span>Weapon proficiency</span><span class="lead" aria-hidden="true"></span><span class="status status-missing" title="Not yet" aria-label="Not yet"></span></li>
+          <li><span>Crafting skills</span><span class="lead" aria-hidden="true"></span><span class="status status-missing" title="Not yet" aria-label="Not yet"></span></li>
+          <li><span>Progression without levels</span><span class="lead" aria-hidden="true"></span><span class="status status-missing" title="Not yet" aria-label="Not yet"></span></li>
         </ul>
       </section>
 
       <section>
         <h3>9. World Events</h3>
         <ul>
-          <li><span>NPCs reacting to events</span><span class="status status-partial" title="Partial" aria-label="Partial"></span></li>
-          <li><span>Requests appearing</span><span class="status status-missing" title="Not yet" aria-label="Not yet"></span></li>
-          <li><span>Creatures vs NPCs</span><span class="status status-done" title="Done" aria-label="Done"></span></li>
-          <li><span>Persistent fallout</span><span class="status status-partial" title="Partial" aria-label="Partial"></span></li>
-          <li><span>Multiple solutions</span><span class="status status-partial" title="Partial" aria-label="Partial"></span></li>
+          <li><span>NPCs reacting to events</span><span class="lead" aria-hidden="true"></span><span class="status status-partial" title="Partial" aria-label="Partial"></span></li>
+          <li><span>Requests appearing</span><span class="lead" aria-hidden="true"></span><span class="status status-missing" title="Not yet" aria-label="Not yet"></span></li>
+          <li><span>Creatures vs NPCs</span><span class="lead" aria-hidden="true"></span><span class="status status-done" title="Done" aria-label="Done"></span></li>
+          <li><span>Persistent fallout</span><span class="lead" aria-hidden="true"></span><span class="status status-partial" title="Partial" aria-label="Partial"></span></li>
+          <li><span>Multiple solutions</span><span class="lead" aria-hidden="true"></span><span class="status status-partial" title="Partial" aria-label="Partial"></span></li>
         </ul>
       </section>
 
       <section>
         <h3>10. Persistence</h3>
         <ul>
-          <li><span>Save and load</span><span class="status status-missing" title="Not yet" aria-label="Not yet"></span></li>
-          <li><span>Character persistence</span><span class="status status-missing" title="Not yet" aria-label="Not yet"></span></li>
-          <li><span>Injuries and equipment</span><span class="status status-partial" title="Partial" aria-label="Partial"></span></li>
-          <li><span>NPC changes</span><span class="status status-partial" title="Partial" aria-label="Partial"></span></li>
-          <li><span>World changes</span><span class="status status-partial" title="Partial" aria-label="Partial"></span></li>
+          <li><span>Save and load</span><span class="lead" aria-hidden="true"></span><span class="status status-missing" title="Not yet" aria-label="Not yet"></span></li>
+          <li><span>Character persistence</span><span class="lead" aria-hidden="true"></span><span class="status status-missing" title="Not yet" aria-label="Not yet"></span></li>
+          <li><span>Injuries and equipment</span><span class="lead" aria-hidden="true"></span><span class="status status-partial" title="Partial" aria-label="Partial"></span></li>
+          <li><span>NPC changes</span><span class="lead" aria-hidden="true"></span><span class="status status-partial" title="Partial" aria-label="Partial"></span></li>
+          <li><span>World changes</span><span class="lead" aria-hidden="true"></span><span class="status status-partial" title="Partial" aria-label="Partial"></span></li>
         </ul>
       </section>
 

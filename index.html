@@ -142,6 +142,50 @@
         drop-shadow(0 -0.5px 0 #828080);
     }
 
+    .sprite.scythe {
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .sprite.scythe:active {
+      transform: rotate(-18deg);
+    }
+
+    .harvest-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: flex-end;
+      gap: 0.35rem 0.45rem;
+      min-height: 0;
+      margin: 0 0 1rem;
+    }
+
+    .harvest-row:empty {
+      display: none;
+    }
+
+    .crop {
+      width: 40px;
+      height: 40px;
+      image-rendering: pixelated;
+      image-rendering: crisp-edges;
+      cursor: pointer;
+      user-select: none;
+      filter:
+        drop-shadow(0.5px 0 0 #828080)
+        drop-shadow(-0.5px 0 0 #828080)
+        drop-shadow(0 0.5px 0 #828080)
+        drop-shadow(0 -0.5px 0 #828080);
+      transition: opacity 0.12s ease, transform 0.12s ease;
+    }
+
+    .crop.reaping {
+      opacity: 0;
+      transform: translateY(6px) rotate(12deg);
+      pointer-events: none;
+    }
+
     .note {
       margin: 0 0 1rem;
       color: var(--muted);
@@ -311,10 +355,11 @@
 
     <main>
       <div class="roadmap-row">
-        <img class="sprite" src="assets/scythe.png" alt="" width="32" height="32" />
+        <img class="sprite scythe" src="assets/scythe.png" alt="" width="32" height="32" />
         <h2 class="roadmap">Roadmap to Alpha</h2>
-        <img class="sprite" src="assets/scythe.png" alt="" width="32" height="32" />
+        <img class="sprite scythe" src="assets/scythe.png" alt="" width="32" height="32" />
       </div>
+      <div class="harvest-row" id="harvest-row" aria-hidden="true"></div>
 
       <div class="completion" aria-label="Completion">
         <div class="completion-head">
@@ -463,5 +508,51 @@
       Age of Harvest
     </footer>
   </div>
+  <script>
+    (function () {
+      var row = document.getElementById("harvest-row");
+      var wheat = [
+        "assets/wheat_01.png",
+        "assets/wheat_02.png",
+        "assets/wheat_03.png",
+        "assets/wheat_04.png",
+        "assets/wheat_05.png"
+      ];
+      var next = 0;
+      var swing = new Audio("assets/scythe_swing.mp3");
+      swing.volume = 0.55;
+
+      function playSwing() {
+        try {
+          var a = swing.cloneNode();
+          a.volume = swing.volume;
+          a.play();
+        } catch (e) {}
+      }
+
+      function addCrop() {
+        var img = document.createElement("img");
+        img.className = "crop";
+        img.src = wheat[next % wheat.length];
+        next += 1;
+        img.alt = "";
+        img.width = 64;
+        img.height = 64;
+        img.addEventListener("click", function () {
+          playSwing();
+          img.classList.add("reaping");
+          setTimeout(function () {
+            if (img.parentNode) img.parentNode.removeChild(img);
+          }, 130);
+        });
+        row.appendChild(img);
+      }
+
+      var scythes = document.querySelectorAll(".sprite.scythe");
+      for (var i = 0; i < scythes.length; i++) {
+        scythes[i].addEventListener("click", addCrop);
+      }
+    })();
+  </script>
 </body>
 </html>

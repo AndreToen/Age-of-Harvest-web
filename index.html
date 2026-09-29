@@ -217,8 +217,8 @@
     }
 
     .bar .seg-done { background: #2f9e5b; flex: 33; }
-    .bar .seg-partial { background: #d4b12a; flex: 24; }
-    .bar .seg-missing { background: #c43c32; flex: 0; }
+    .bar .seg-partial { background: #d4b12a; flex: 18; }
+    .bar .seg-missing { background: #c43c32; flex: 6; }
 
     .bar-labels {
       display: flex;
@@ -371,17 +371,17 @@
       <div class="completion" aria-label="Completion">
         <div class="completion-head">
           <strong>Completion</strong>
-          <span>~79% complete</span>
+          <span>~74% complete</span>
         </div>
-        <div class="bar" role="img" aria-label="33 done, 24 partial, 0 not yet">
+        <div class="bar" role="img" aria-label="33 done, 18 partial, 6 not yet">
           <div class="seg-done" title="Done"></div>
           <div class="seg-partial" title="Partial"></div>
           <div class="seg-missing" title="Not yet"></div>
         </div>
         <div class="bar-labels">
           <span><i class="dot dot-done" aria-hidden="true"></i><b>58%</b> done</span>
-          <span><i class="dot dot-partial" aria-hidden="true"></i><b>42%</b> partial</span>
-          <span><i class="dot dot-missing" aria-hidden="true"></i><b>0%</b> not yet</span>
+          <span><i class="dot dot-partial" aria-hidden="true"></i><b>32%</b> partial</span>
+          <span><i class="dot dot-missing" aria-hidden="true"></i><b>11%</b> not yet</span>
         </div>
       </div>
 
@@ -453,7 +453,7 @@
           <li><span>Dialogue</span><span class="lead" aria-hidden="true"></span><span class="status status-done" title="Done" aria-label="Done"></span></li>
           <li><span>Relationships</span><span class="lead" aria-hidden="true"></span><span class="status status-partial" title="Partial" aria-label="Partial"></span></li>
           <li><span>NPC memory</span><span class="lead" aria-hidden="true"></span><span class="status status-partial" title="Partial" aria-label="Partial"></span></li>
-          <li><span>Requests and favors</span><span class="lead" aria-hidden="true"></span><span class="status status-partial" title="Partial" aria-label="Partial"></span></li>
+          <li><span>Requests and favors</span><span class="lead" aria-hidden="true"></span><span class="status status-missing" title="Not yet" aria-label="Not yet"></span></li>
           <li><span>NPC reactions</span><span class="lead" aria-hidden="true"></span><span class="status status-done" title="Done" aria-label="Done"></span></li>
           <li><span>Roles and personalities</span><span class="lead" aria-hidden="true"></span><span class="status status-done" title="Done" aria-label="Done"></span></li>
         </ul>
@@ -473,9 +473,9 @@
       <section>
         <h3>8. Skills &amp; Development</h3>
         <ul>
-          <li><span>Skills through use</span><span class="lead" aria-hidden="true"></span><span class="status status-partial" title="Partial" aria-label="Partial"></span></li>
+          <li><span>Skills through use</span><span class="lead" aria-hidden="true"></span><span class="status status-missing" title="Not yet" aria-label="Not yet"></span></li>
           <li><span>Physical development</span><span class="lead" aria-hidden="true"></span><span class="status status-partial" title="Partial" aria-label="Partial"></span></li>
-          <li><span>Weapon proficiency</span><span class="lead" aria-hidden="true"></span><span class="status status-partial" title="Partial" aria-label="Partial"></span></li>
+          <li><span>Weapon proficiency</span><span class="lead" aria-hidden="true"></span><span class="status status-missing" title="Not yet" aria-label="Not yet"></span></li>
           <li><span>Progression without levels</span><span class="lead" aria-hidden="true"></span><span class="status status-partial" title="Partial" aria-label="Partial"></span></li>
         </ul>
       </section>
@@ -484,7 +484,7 @@
         <h3>9. World Events</h3>
         <ul>
           <li><span>NPCs reacting to events</span><span class="lead" aria-hidden="true"></span><span class="status status-partial" title="Partial" aria-label="Partial"></span></li>
-          <li><span>Requests appearing</span><span class="lead" aria-hidden="true"></span><span class="status status-partial" title="Partial" aria-label="Partial"></span></li>
+          <li><span>Requests appearing</span><span class="lead" aria-hidden="true"></span><span class="status status-missing" title="Not yet" aria-label="Not yet"></span></li>
           <li><span>Creatures vs NPCs</span><span class="lead" aria-hidden="true"></span><span class="status status-done" title="Done" aria-label="Done"></span></li>
           <li><span>Persistent fallout</span><span class="lead" aria-hidden="true"></span><span class="status status-partial" title="Partial" aria-label="Partial"></span></li>
           <li><span>Multiple solutions</span><span class="lead" aria-hidden="true"></span><span class="status status-partial" title="Partial" aria-label="Partial"></span></li>
@@ -494,8 +494,8 @@
       <section>
         <h3>10. Persistence</h3>
         <ul>
-          <li><span>Save and load</span><span class="lead" aria-hidden="true"></span><span class="status status-partial" title="Partial" aria-label="Partial"></span></li>
-          <li><span>Character persistence</span><span class="lead" aria-hidden="true"></span><span class="status status-partial" title="Partial" aria-label="Partial"></span></li>
+          <li><span>Save and load</span><span class="lead" aria-hidden="true"></span><span class="status status-missing" title="Not yet" aria-label="Not yet"></span></li>
+          <li><span>Character persistence</span><span class="lead" aria-hidden="true"></span><span class="status status-missing" title="Not yet" aria-label="Not yet"></span></li>
           <li><span>Injuries and equipment</span><span class="lead" aria-hidden="true"></span><span class="status status-partial" title="Partial" aria-label="Partial"></span></li>
           <li><span>NPC changes</span><span class="lead" aria-hidden="true"></span><span class="status status-partial" title="Partial" aria-label="Partial"></span></li>
           <li><span>World changes</span><span class="lead" aria-hidden="true"></span><span class="status status-partial" title="Partial" aria-label="Partial"></span></li>
